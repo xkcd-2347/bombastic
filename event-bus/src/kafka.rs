@@ -1,3 +1,5 @@
+use std::time::Duration;
+
 use rdkafka::admin::{AdminClient, AdminOptions, NewTopic};
 use rdkafka::config::ClientConfig;
 use rdkafka::consumer::stream_consumer::StreamConsumer;
@@ -73,6 +75,11 @@ impl EventBus for KafkaEventBus {
             message,
             consumer: &self.consumer,
         })
+    }
+
+    async fn send(&self, data: &[u8]) -> Result<(), Self::Error> {
+        self.producer.send(record, Duration::from_secs(10)).await?;
+        Ok(())
     }
 }
 

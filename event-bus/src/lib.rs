@@ -13,6 +13,8 @@ pub trait EventBus {
     where
         Self: 'm;
     async fn poll<'m>(&'m self) -> Result<Self::Event<'m>, Self::Error>;
+
+    async fn send(&self, data: &[u8]) -> Result<(), Self::Error>;
 }
 
 #[cfg(feature = "kafka")]

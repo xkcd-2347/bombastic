@@ -32,7 +32,6 @@ pub async fn run<E: EventBus>(
         select! {
             bus = event_bus.poll() => match bus {
                 Ok(event) => loop {
-                    tracing::info!("Got event!");
                     if let Some(payload) = event.payload() {
                         if let Ok(data) = serde_json::from_slice::<StorageEvent>(payload) {
                             tracing::trace!("Got payload from event: {:?}", data);
