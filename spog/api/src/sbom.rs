@@ -1,9 +1,36 @@
-use crate::search::{fetch_object, QueryParams, SharedState};
+use crate::search;
+use crate::server::{fetch_object, SharedState};
+use actix_web::web::ServiceConfig;
 use actix_web::{web, HttpResponse, Responder};
 use spog_model::search::SearchResult;
 use trustification_index::IndexStore;
 
-pub async fn search(state: web::Data<SharedState>, params: web::Query<QueryParams>) -> impl Responder {
+pub(crate) fn configure() -> impl FnOnce(&mut ServiceConfig) {
+    |config: &mut ServiceConfig| {
+        config.service(web::resource("/api/v1/package/search").to(search));
+        config.service(web::resource("/api/v1/package").to(get));
+    }
+}
+
+#[derive(Debug, serde::Deserialize)]
+pub struct GetParams {
+    pub purl: String,
+}
+
+pub async fn get(state: web::Data<SharedState>, params: web::Query<GetParams>) -> impl Responder {
+    let params = params.into_inner();
+    let state = &state.sbom;
+    let storage = state.storage.read().await;
+
+    // TODO: Stream
+    if let Some(obj) = fetch_object(&storage, &params.purl).await {
+        HttpResponse::Ok().json(obj)
+    } else {
+        HttpResponse::NotFound().finish()
+    }
+}
+
+pub async fn search(state: web::Data<SharedState>, params: web::Query<search::QueryParams>) -> impl Responder {
     let params = params.into_inner();
     tracing::trace!("Querying SBOM using {}", params.q);
     let state = &state.sbom;

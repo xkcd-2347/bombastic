@@ -198,6 +198,7 @@ pub enum Column {
     Title,
     Revision,
     Products,
+    Download,
     Vulnerabilities,
 }
 
@@ -208,6 +209,7 @@ impl TableEntryRenderer<Column> for Csaf {
             Column::Title => html!(&self.document.title).into(),
             Column::Revision => html!(&self.document.tracking.current_release_date.to_rfc3339()).into(),
             Column::Products => html!().into(),
+            Column::Download => html!(<a href={format!("/api/v1/advisory?id={}", self.document.tracking.id)}>{"Download"}</a>).into(),
             Column::Vulnerabilities => self
                 .vulnerabilities
                 .as_ref()
@@ -234,9 +236,10 @@ pub fn vulnerability_result(props: &AdvisoryResultProperties) -> Html {
     let header = html_nested! {
         <TableHeader<Column>>
             <TableColumn<Column> label="ID" index={Column::Id} width={ColumnWidth::Percent(10)}/>
-            <TableColumn<Column> label="Title" index={Column::Title} width={ColumnWidth::Percent(55)}/>
+            <TableColumn<Column> label="Title" index={Column::Title} width={ColumnWidth::Percent(45)}/>
             <TableColumn<Column> label="Revision" index={Column::Revision} width={ColumnWidth::Percent(10)}/>
             <TableColumn<Column> label="Products" index={Column::Products} width={ColumnWidth::Percent(10)}/>
+            <TableColumn<Column> label="Download" index={Column::Products} width={ColumnWidth::Percent(10)}/>
             <TableColumn<Column> label="Vulnerabilities" index={Column::Vulnerabilities} width={ColumnWidth::Percent(10)}/>
         </TableHeader<Column>>
     };
