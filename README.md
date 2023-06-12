@@ -10,6 +10,12 @@ use that information to learn impact of vulnerabilities and dependency changes.
 * [Bombastic](bombastic/README.md) - Storage and archival of SBOM documents.
 * [Vexination](vexination/README.md) - Storage and archival of VEX documents.
 * [Reservoir](reservoir/README.md) - Managing product metadata and access control.
+* [Spog](spog/README.md) - Single Pane Of Glass API and frontend.
+
+
+The following diagram illustrates how these services work together. Check the README files for individual components for more detailed information.
+
+![Trustification Overview](images/trustification.png)
 
 ## Running locally
 
@@ -24,15 +30,13 @@ docker-compose -f compose.yaml -f compose-trustification.yaml -f compose-guac.ya
 
 This will start MinIO and Kafka for object storage and eventing and then run all the trustification services. It will also start to ingest data from Red Hat sources automatically via the vexination-walker and (TODO bombastic-walker) processes.
 
-## Usage
+You can also run all of the trustification services via a single binary named `trust` or using the container image `ghcr.io/trustification/trust`. 
 
-### Searching
+You can also try out the publicly hosted instance at [https://trustification.dev](https://trustification.dev).
 
-You can search all the data using the `spog-search` endpoint:
+## Developing
 
-```shell
-curl "http://localhost:8083/?q=bind"
-```
+See [DEVELOPMENT](DEVELOPMENT.md) for running the different components while developing.
 
 ## Building
 
