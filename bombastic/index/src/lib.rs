@@ -559,11 +559,11 @@ mod tests {
 
         let data = std::fs::read_to_string("../testdata/ubi9-sbom.json").unwrap();
         let sbom = SBOM::parse(data.as_bytes()).unwrap();
-        writer.write(store.index(), "ubi9-sbom", &sbom).unwrap();
+        writer.add_document(store.index_as_mut(), "ubi9-sbom", &sbom).unwrap();
 
         let data = std::fs::read_to_string("../testdata/my-sbom.json").unwrap();
         let sbom = SBOM::parse(data.as_bytes()).unwrap();
-        writer.write(store.index(), "my-sbom", &sbom).unwrap();
+        writer.add_document(store.index_as_mut(), "my-sbom", &sbom).unwrap();
         writer.commit().unwrap();
 
         f(store);

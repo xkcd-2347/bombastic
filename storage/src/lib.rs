@@ -229,7 +229,7 @@ impl Storage {
         // Record keys are URL encoded
         if let Ok((decoded, key)) = Self::key_from_event(record) {
             let ret = self.get_object(&decoded).await?;
-            Ok((key.to_string(), ret))
+            Ok((key, ret))
         } else {
             Err(Error::InvalidKey(record.key().to_string()))
         }
