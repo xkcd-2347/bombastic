@@ -13,7 +13,7 @@ WORKDIR /usr/src/project
 
 RUN TAG=$tag cargo build -p trust --release
 
-FROM registry.access.redhat.com/ubi9/ubi-minimal:latest
+FROM registry.access.redhat.com/ubi9/ubi-micro:latest
 
 LABEL org.opencontainers.image.source="https://github.com/trustification/trustification"
 
