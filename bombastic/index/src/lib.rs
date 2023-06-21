@@ -324,13 +324,9 @@ impl Index {
 
             Packages::Description(primary) => self.match_boolean_union(&[self.fields.sbom.desc], primary),
 
-            Packages::Digest(primary) => {
-                self.match_boolean_union(&[self.fields.sbom.sha256, self.fields.dep.sha256], primary)
-            }
+            Packages::Digest(primary) => self.match_boolean_union(&[self.fields.sbom.sha256], primary),
 
-            Packages::License(primary) => {
-                self.match_boolean_union(&[self.fields.sbom.license, self.fields.dep.license], primary)
-            }
+            Packages::License(primary) => self.match_boolean_union(&[self.fields.sbom.license], primary),
 
             Packages::Supplier(primary) => self.match_boolean_union(&[self.fields.sbom.supplier], primary),
 
@@ -553,7 +549,7 @@ mod tests {
     #[tokio::test]
     async fn test_search_form() {
         assert_search(|index| {
-            let result = index.search("openssl", 0, 100).unwrap();
+            let result = index.search("ubi9-container", 0, 100).unwrap();
             assert_eq!(result.0.len(), 1);
         });
     }
@@ -578,7 +574,7 @@ mod tests {
     #[tokio::test]
     async fn test_search_namespace() {
         assert_search(|index| {
-            let result = index.search("io.seedwing in:namespace", 0, 10000).unwrap();
+            let result = index.search("namespace:io.seedwing", 0, 10000).unwrap();
             assert_eq!(result.0.len(), 1);
         });
     }
@@ -603,7 +599,7 @@ mod tests {
     #[tokio::test]
     async fn test_dependency() {
         assert_search(|index| {
-            let result = index.search("openssl in:dependency", 0, 10000).unwrap();
+            let result = index.search("dependency:openssl", 0, 10000).unwrap();
             // Should get all documents from test data
             assert_eq!(result.0.len(), 1);
         });
@@ -612,7 +608,7 @@ mod tests {
     #[tokio::test]
     async fn test_quarkus() {
         assert_search(|index| {
-            let result = index.search("quarkus-arc", 0, 10000).unwrap();
+            let result = index.search("dependency:quarkus-arc", 0, 10000).unwrap();
             // Should get all documents from test data
             assert_eq!(result.0.len(), 1);
         });

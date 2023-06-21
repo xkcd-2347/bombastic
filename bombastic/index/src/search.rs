@@ -4,25 +4,25 @@ use sikula::prelude::*;
 pub enum Packages<'a> {
     #[search(default)]
     Package(Primary<'a>),
-    #[search(default)]
+    #[search]
     Type(Primary<'a>),
-    #[search(default)]
+    #[search]
     Namespace(Primary<'a>),
-    #[search(default)]
+    #[search]
     Version(Primary<'a>),
     #[search(default)]
     Description(Primary<'a>),
     #[search]
     Created(Ordered<time::OffsetDateTime>),
-    #[search(default)]
+    #[search]
     Digest(Primary<'a>),
-    #[search(default)]
+    #[search]
     License(Primary<'a>),
-    #[search(default)]
+    #[search]
     Supplier(Primary<'a>),
-    #[search(default)]
+    #[search]
     Qualifier(Primary<'a>),
-    #[search(default)]
+    #[search]
     Dependency(Primary<'a>),
     Application,
     Library,
