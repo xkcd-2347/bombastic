@@ -16,9 +16,9 @@ pub enum Command {
 #[derive(clap::Parser, Debug)]
 #[command(
     author,
-    version = env!("CARGO_PKG_VERSION"),
-    about = "Trust",
-    long_about = None
+    version = trustification_version::version(),
+    about = "Trustification",
+    long_about = Some("Trustification is a collection of services that allow you to store bill of materials (SBOM), vulnerability information (VEX) for your organization and use that information to learn impact of vulnerabilities and dependency changes."),
 )]
 pub struct Cli {
     #[command(subcommand)]

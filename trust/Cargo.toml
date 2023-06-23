@@ -8,6 +8,7 @@ vexination = { path = "../vexination/vexination" }
 bombastic = { path = "../bombastic/bombastic" }
 spog = { path = "../spog/spog" }
 exporter = { path = "../exporter" }
+trustification-version = { path = "../version" }
 
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0.68"

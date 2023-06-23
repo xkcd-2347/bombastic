@@ -4,10 +4,12 @@ pub mod data {
     pub use spog_model::prelude::*;
 }
 
+mod api;
 mod pkg;
 mod sbom;
 mod vuln;
 
+pub use api::*;
 pub use pkg::*;
 pub use sbom::*;
 use url::{ParseError, Url};

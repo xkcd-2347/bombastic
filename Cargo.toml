@@ -25,6 +25,7 @@ members = [
     "storage",
     "index",
     "infrastructure",
+    "version",
 ]
 default-members = [
     "bombastic/bombastic",
@@ -51,6 +52,7 @@ default-members = [
     "storage",
     "index",
     "infrastructure",
+    "version",
 ]
 
 [patch.crates-io]

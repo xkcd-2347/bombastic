@@ -10,6 +10,7 @@ mod advisory;
 mod sbom;
 mod search;
 mod server;
+mod version;
 // mod vulnerability;
 
 #[derive(clap::Args, Debug)]

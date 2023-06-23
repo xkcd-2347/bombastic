@@ -4670,6 +4670,7 @@ dependencies = [
  "tokio",
  "tracing",
  "trustification-infrastructure",
+ "trustification-version",
  "urlencoding",
  "utoipa",
  "utoipa-swagger-ui",
@@ -5305,6 +5306,7 @@ dependencies = [
  "tokio",
  "tracing",
  "tracing-subscriber",
+ "trustification-version",
  "vexination",
 ]
 
@@ -5372,6 +5374,10 @@ dependencies = [
  "tracing",
  "urlencoding",
 ]
+
+[[package]]
+name = "trustification-version"
+version = "0.1.0"
 
 [[package]]
 name = "try-lock"

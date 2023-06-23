@@ -33,6 +33,7 @@ yew-more-hooks = { version = "0.1.2", features = ["yew-hooks"] }
 yew-nested-router = "0.2.1"
 time = { version = "0.3", features = ["formatting", "macros", "wasm-bindgen"] }
 csaf = { version = "0.5.0", default-features = false }
+trustification-version = { path = "../../version" }
 
 spog-model = "0.1.0"
 

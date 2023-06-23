@@ -1,11 +1,19 @@
 use patternfly_yew::prelude::*;
 use yew::prelude::*;
-
+use crate::backend::ApiService;
+use yew_hooks::{use_async_with_options, UseAsyncOptions};
 use crate::hooks::use_backend::use_backend;
 
 #[function_component(About)]
 pub fn about() -> Html {
     let backend = use_backend();
+    let service = use_memo(|backend| ApiService::new((**backend).clone()), backend.clone());
+    let server_version = {
+        use_async_with_options(async move {
+            service.version().await.map_err(|e| format!("Error fetching server version: {:?}", e))
+        }, UseAsyncOptions::enable_auto())
+    };
+    let client_version = trustification_version::version();
 
     html!(
         <Bullseye plain=true>
@@ -23,8 +31,21 @@ pub fn about() -> Html {
                 <Content>
                     <p>{ env!("CARGO_PKG_DESCRIPTION") }</p>
                     <dl style="width: 100%">
-                        <dt>{ "Version" }</dt>
-                        <dd>{ env!("CARGO_PKG_VERSION") }</dd>
+                        <dt>{ "Server Version" }</dt>
+                        <dd>
+                            {
+                                if server_version.loading {
+                                    html!{ "loading..." }
+                                } else {
+                                    html! {
+                                        server_version.data.as_ref().unwrap_or(&String::new())
+                                    }
+                                }
+                            }
+                        </dd>
+                        <dt>{ "Client Version" }</dt>
+                        <dd>{ client_version }</dd>
+                        <dt>{ "License" }</dt>
                         <dt>{ "License" }</dt>
                         <dd>{ env!("CARGO_PKG_LICENSE") }</dd>
                         if let Some(commit) = option_env!("BUILD_COMMIT") {

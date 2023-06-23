@@ -20,11 +20,12 @@ pub struct Server {
             sbom::search,
             advisory::get,
             advisory::search,
+            version::get,
             //vulnerability::search,
         ),
         components(
             //schemas(search::PackageSummary, search::VulnSummary, search::SearchResult<Vec<search::PackageSummary>>)
-            schemas(search::PackageSummary, search::SearchResult<Vec<search::PackageSummary>>)
+            schemas(search::PackageSummary, search::SearchResult<Vec<search::PackageSummary>>, spog_model::Version)
         ),
         tags(
             (name = "package", description = "Package endpoints"),
@@ -59,6 +60,7 @@ impl Server {
                 .app_data(web::Data::new(state))
                 .configure(crate::sbom::configure())
                 .configure(crate::advisory::configure())
+                .configure(crate::version::configure())
                 //.configure(crate::vulnerability::configure())
                 .service(SwaggerUi::new("/swagger-ui/{_:.*}").url("/openapi.json", openapi.clone()))
         })

@@ -42,3 +42,4 @@ spog-model = { path = "../model" }
 vexination-model = { path = "../../vexination/model" }
 bombastic-model = { path = "../../bombastic/model" }
 trustification-infrastructure = { path = "../../infrastructure" }
+trustification-version = { path = "../../version" }
