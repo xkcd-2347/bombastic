@@ -29,6 +29,7 @@ members = [
     "index",
     "infrastructure",
     "version",
+    "policy",
 ]
 default-members = [
     "bombastic/bombastic",
@@ -55,6 +56,7 @@ default-members = [
     "storage",
     "index",
     "infrastructure",
+    "policy",
     "version",
 ]
 

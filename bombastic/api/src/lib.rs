@@ -11,6 +11,7 @@ use prometheus::Registry;
 use tokio::sync::RwLock;
 use trustification_index::{IndexConfig, IndexStore};
 use trustification_infrastructure::{Infrastructure, InfrastructureConfig};
+use trustification_policy::{PolicyClient, PolicyConfig};
 use trustification_storage::{Storage, StorageConfig};
 
 mod sbom;
@@ -36,15 +37,19 @@ pub struct Run {
 
     #[command(flatten)]
     pub infra: InfrastructureConfig,
+
+    #[command(flatten)]
+    pub policy: PolicyConfig,
 }
 
 impl Run {
     pub async fn run(self, listener: Option<TcpListener>) -> anyhow::Result<ExitCode> {
         let index = self.index;
         let storage = self.storage;
+        let policy = self.policy;
         Infrastructure::from(self.infra)
             .run("bombastic-api", |metrics| async move {
-                let state = Self::configure(index, storage, metrics.registry(), self.devmode)?;
+                let state = Self::configure(index, storage, policy, metrics.registry(), self.devmode)?;
                 let mut srv = HttpServer::new(move || {
                     App::new()
                         .app_data(web::Data::new(state.clone()))
@@ -66,16 +71,19 @@ impl Run {
     fn configure(
         index: IndexConfig,
         mut storage: StorageConfig,
+        policy: PolicyConfig,
         registry: &Registry,
         devmode: bool,
     ) -> anyhow::Result<Arc<AppState>> {
         let sync_interval: Duration = index.sync_interval.into();
         let index = IndexStore::new(&index, bombastic_index::Index::new(), registry)?;
         let storage = storage.create("bombastic", devmode, registry)?;
+        let policy = policy.create(registry)?;
 
         let state = Arc::new(AppState {
             storage: RwLock::new(storage),
             index: RwLock::new(index),
+            policy: RwLock::new(policy),
         });
 
         let sinker = state.clone();
@@ -106,6 +114,7 @@ pub(crate) type Index = IndexStore<bombastic_index::Index>;
 pub struct AppState {
     storage: RwLock<Storage>,
     index: RwLock<Index>,
+    policy: RwLock<PolicyClient>,
 }
 
 pub(crate) type SharedState = Arc<AppState>;

@@ -16,6 +16,7 @@ bombastic-model = { path = "../model" }
 trustification-infrastructure = { path = "../../infrastructure" }
 trustification-storage = { path = "../../storage" }
 trustification-index = { path = "../../index" }
+trustification-policy = { path = "../../policy" }
 clap = { version = "4", features = ["derive"] }
 anyhow = "1"
 sha2 = "0.10"

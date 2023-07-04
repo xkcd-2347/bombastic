@@ -1,0 +1,12 @@
+[package]
+name = "trustification-policy"
+version = "0.1.0"
+edition = "2021"
+license = "Apache-2.0"
+
+[dependencies]
+url = "2.4.0"
+reqwest = "0.11.18"
+prometheus = "0.13.3"
+clap = { version = "4", features = ["derive", "env"] }
+thiserror = "1"

@@ -1065,6 +1065,7 @@ dependencies = [
  "tokio",
  "trustification-index",
  "trustification-infrastructure",
+ "trustification-policy",
  "trustification-storage",
  "utoipa",
  "utoipa-swagger-ui",
@@ -5770,6 +5771,17 @@ dependencies = [
  "tracing-bunyan-formatter",
  "tracing-opentelemetry",
  "tracing-subscriber",
+]
+
+[[package]]
+name = "trustification-policy"
+version = "0.1.0"
+dependencies = [
+ "clap",
+ "prometheus",
+ "reqwest",
+ "thiserror",
+ "url",
 ]
 
 [[package]]
