@@ -1,18 +1,19 @@
 [package]
 name = "exporter"
-version = "0.1.0"
-edition = "2021"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+version.workspace = true
+edition.workspace = true
+publish.workspace = true
+license.workspace = true
 
 [dependencies]
-tokio = { version = "1.0", features = ["full"] }
-log = "0.4"
-trustification-event-bus = { path = "../event-bus" }
-trustification-infrastructure = { path = "../infrastructure" }
-trustification-storage = { path = "../storage" }
-clap = { version = "4", features = ["derive"] }
-anyhow = "1"
+anyhow = { workspace = true }
+clap = { workspace = true, features = ["derive"] }
 guac = { workspace = true }
-strum = "0.26"
-strum_macros = "0.26"
+log = { workspace = true }
+strum = { workspace = true }
+strum_macros = { workspace = true }
+tokio = { workspace = true, features = ["full"] }
+
+trustification-event-bus = { workspace = true }
+trustification-infrastructure = { workspace = true }
+trustification-storage = { workspace = true }

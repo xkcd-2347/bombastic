@@ -1,19 +1,20 @@
 [package]
 name = "trustification-common"
-version = "0.1.0"
-edition = "2021"
-license = "Apache-2.0"
+version.workspace = true
+edition.workspace = true
+publish.workspace = true
+license.workspace = true
 description = "Common tools"
 
 [dependencies]
-anyhow = "1"
-clap = { version = "4", features = ["derive", "env"] }
-log = "0.4"
-serde = { version = "1", features = ["derive"] }
+anyhow = { workspace = true }
+clap = { workspace = true, features = ["derive", "env"] }
+log = { workspace = true }
+serde = { workspace = true, features = ["derive"] }
 
-pem = { version = "3", optional = true }
-reqwest = { version = "0.11", optional = true }
-native-tls = { version = "0.2", optional = true }
+native-tls = { workspace = true, optional = true }
+pem = { workspace = true, optional = true }
+reqwest = { workspace = true, optional = true }
 
 [features]
 default = ["tls"]

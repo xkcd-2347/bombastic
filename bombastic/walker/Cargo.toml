@@ -1,29 +1,31 @@
 [package]
 name = "bombastic-walker"
-version = "0.1.0"
-edition = "2021"
+version.workspace = true
+edition.workspace = true
+publish.workspace = true
+license.workspace = true
 
 [dependencies]
-anyhow = "1"
-async-trait = "0.1"
-bytes = "1"
-bzip2 = "0.4"
-clap = "4.3.3"
-humantime = "2.1.0"
-log = "0.4"
-parking_lot = "0.12"
-sbom-walker = { version = "=0.6.0-rc.1", features = ["crypto-openssl", "spdx-rs", "cyclonedx-bom"], default-features = false }
-serde = { version = "1", features = ["derive"] }
-serde_json = "1"
-spdx-expression = "0.5"
-thiserror = "1"
-time = { version = "0.3.21", features = ["serde", "serde-well-known"] }
-tokio = "1.28.2"
-tracing = "0.1"
-url = "2.4.0"
-walker-common = "=0.6.0-rc.1"
-walker-extras = "=0.6.0-rc.1"
+anyhow = { workspace = true }
+async-trait = { workspace = true }
+bytes = { workspace = true }
+bzip2 = { workspace = true }
+clap = { workspace = true }
+humantime = { workspace = true }
+log = { workspace = true }
+parking_lot = { workspace = true }
+sbom-walker = { workspace = true, features = ["crypto-openssl", "spdx-rs", "cyclonedx-bom"], default-features = false }
+serde = { workspace = true, features = ["derive"] }
+serde_json = { workspace = true }
+spdx-expression = { workspace = true }
+thiserror = { workspace = true }
+time = { workspace = true, features = ["serde", "serde-well-known"] }
+tokio = { workspace = true }
+tracing = { workspace = true }
+url = { workspace = true }
+walker-common = { workspace = true }
+walker-extras = { workspace = true }
 
-trustification-common-walker = { path = "../../common/walker" }
-trustification-auth = { path = "../../auth" }
-trustification-infrastructure = { path = "../../infrastructure" }
+trustification-common-walker = { workspace = true }
+trustification-auth = { workspace = true }
+trustification-infrastructure = { workspace = true }

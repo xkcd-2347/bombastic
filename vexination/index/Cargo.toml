@@ -1,19 +1,22 @@
 [package]
 name = "vexination-index"
-version = "0.1.0"
-edition = "2021"
+version.workspace = true
+edition.workspace = true
+publish.workspace = true
+license.workspace = true
 
 [dependencies]
-serde = { version = "1.0", features = ["derive"] }
-log = "0.4"
-csaf = "0.5"
-sikula = { version = "0.4.0", features = ["time"] }
-time = "0.3"
-trustification-api = { path = "../../api" }
-trustification-index = { path = "../../index" }
-vexination-model = { path = "../model" }
-serde_json = "1"
-cpe = "0.1.3"
+cpe = { workspace = true }
+csaf = { workspace = true }
+log = { workspace = true }
+serde = { workspace = true, features = ["derive"] }
+serde_json = { workspace = true }
+sikula = { workspace = true, features = ["time"] }
+time = { workspace = true }
+
+trustification-api = { workspace = true }
+trustification-index = { workspace = true }
+vexination-model = { workspace = true }
 
 [dev-dependencies]
 tokio = { version = "1", features = ["full"] }

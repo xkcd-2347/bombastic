@@ -1,9 +1,9 @@
 [package]
 name = "reservoir-api"
-version = "0.1.0"
-edition = "2021"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+version.workspace = true
+edition.workspace = true
+publish.workspace = true
+license.workspace = true
 
 [dependencies]
-serde = { version = "1.0.160", features = [ "derive" ] }
+serde = { workspace = true, features = [ "derive" ] }

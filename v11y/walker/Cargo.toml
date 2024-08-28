@@ -1,25 +1,26 @@
 [package]
 name = "v11y-walker"
-version = "0.1.0"
-edition = "2021"
+version.workspace = true
+edition.workspace = true
+publish.workspace = true
+license.workspace = true
 
 [dependencies]
-anyhow = "1"
-clap = { version = "4", features = ["derive"] }
-collector-osv = {path = "../../collector/osv"}
-cve = "0.3.1"
-cvss = "2"
-log = "0.4"
-prometheus = "0.13.3"
-serde = { version = "1.0", features = ["derive"] }
-serde_json = "1.0.68"
-tokio = { version = "1.0", features = ["full"] }
-walkdir = "2"
-time = "0.3"
-url = "2.4"
+anyhow = { workspace = true }
+clap = { workspace = true, features = ["derive"] }
+cve = { workspace = true }
+cvss = { workspace = true }
+log = { workspace = true }
+prometheus = { workspace = true }
+serde = { workspace = true, features = ["derive"] }
+serde_json = { workspace = true }
+time = { workspace = true }
+tokio = { workspace = true, features = ["full"] }
+url = { workspace = true }
+walkdir = { workspace = true }
 
-v11y-api = { path = "../api" }
-v11y-indexer = { path = "../indexer" }
-
-trustification-storage = { path = "../../storage" }
-trustification-infrastructure = { path = "../../infrastructure" }
+collector-osv = { workspace = true }
+trustification-infrastructure = { workspace = true }
+trustification-storage = { workspace = true }
+v11y-api = { workspace = true }
+v11y-indexer = { workspace = true }

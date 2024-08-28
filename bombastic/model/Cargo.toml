@@ -1,25 +1,24 @@
 [package]
 name = "bombastic-model"
-version = "0.1.0"
-edition = "2021"
-license = "Apache-2.0"
-
+version.workspace = true
+edition.workspace = true
+publish.workspace = true
+license.workspace = true
 description = "The data model of the API"
 
 [dependencies]
-log = "0.4"
-serde = { version = "1", features = ["derive"] }
-sikula = { version = "0.4.1", default-features = false, features = ["time"] }
-time = { version = "0.3", features = ["serde"] }
-tracing = "0.1"
-utoipa = { version = "4" }
+log = { workspace = true }
+serde = { workspace = true, features = ["derive"] }
+sikula = { workspace = true, default-features = false, features = ["time"] }
+time = { workspace = true }
+tracing = { workspace = true }
+utoipa = { workspace = true }
 
 # required by ToSchema utopia
-serde_json = "1"
-urlencoding = "2"
-
-cyclonedx-bom = { version = "0.4.0", optional =  true }
-spdx-rs = { version = "0.5.5", optional = true }
+serde_json = { workspace = true }
+urlencoding = { workspace = true }
+cyclonedx-bom = { workspace = true, optional =  true }
+spdx-rs = { workspace = true, optional = true }
 
 [features]
 default = ["spdx", "cyclonedx"]

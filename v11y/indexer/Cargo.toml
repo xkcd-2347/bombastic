@@ -1,19 +1,19 @@
 [package]
 name = "v11y-indexer"
-version = "0.1.0"
-edition = "2021"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+version.workspace = true
+edition.workspace = true
+publish.workspace = true
+license.workspace = true
 
 [dependencies]
-anyhow = "1"
-clap = { version = "4", features = ["derive"] }
-tokio = { version = "1.0", features = ["full"] }
-trustification-event-bus = { path = "../../event-bus" }
-trustification-infrastructure = { path = "../../infrastructure" }
-trustification-storage = { path = "../../storage" }
-trustification-index = { path = "../../index" }
-trustification-indexer = { path = "../../indexer" }
+anyhow = { workspace = true }
+clap = { workspace = true, features = ["derive"] }
+tokio = { workspace = true, features = ["full"] }
 
-v11y-model = { path = "../model" }
-v11y-index = { path = "../index" }
+trustification-event-bus = { workspace = true }
+trustification-index = { workspace = true }
+trustification-indexer = { workspace = true }
+trustification-infrastructure = { workspace = true }
+trustification-storage = { workspace = true }
+v11y-index = { workspace = true }
+v11y-model = { workspace = true }

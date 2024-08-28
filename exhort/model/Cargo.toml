@@ -1,11 +1,13 @@
 [package]
 name = "exhort-model"
-version = "0.1.0"
-edition = "2021"
+version.workspace = true
+edition.workspace = true
+publish.workspace = true
+license.workspace = true
 
 [dependencies]
-serde = { version = "1.0", features = ["derive"] }
-serde_json = { version = "1.0.68", features = ["raw_value"] }
-utoipa = "4"
+serde = { workspace = true, features = ["derive"] }
+serde_json = { workspace = true, features = ["raw_value"] }
+utoipa = { workspace = true }
 
-v11y-model = { path = "../../v11y/model" }
+v11y-model = { workspace = true }

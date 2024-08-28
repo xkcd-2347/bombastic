@@ -1,22 +1,23 @@
 [package]
 name = "trustification-common-walker"
-version = "0.1.0"
-edition = "2021"
-license = "Apache-2.0"
+version.workspace = true
+edition.workspace = true
+publish.workspace = true
+license.workspace = true
 description = "Common tools for walkers"
 
 [dependencies]
-anyhow = "1"
-async-trait = "0.1"
-log = "0.4"
-parking_lot = "0.12"
-serde = { version = "1", features = ["derive"] }
-thiserror = "1"
-time = { version = "0.3", features = ["serde-well-known"] }
-walker-common = "=0.6.0-rc.1"
-walker-extras = "=0.6.0-rc.1"
-tera = "1.19.1"
-sequoia-openpgp = { version = "*", default-features = false }
+anyhow = { workspace = true }
+async-trait = { workspace = true }
+log = { workspace = true }
+parking_lot = { workspace = true }
+serde = { workspace = true, features = ["derive"] }
+thiserror = { workspace = true }
+time = { workspace = true, features = ["serde-well-known"] }
+walker-common = { workspace = true }
+walker-extras = { workspace = true }
+tera = { workspace = true }
+sequoia-openpgp = { workspace = true, default-features = false }
 
 [dev-dependencies]
 tokio = { version = "1", features = ["full"] }

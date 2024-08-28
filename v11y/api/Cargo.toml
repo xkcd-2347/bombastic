@@ -1,34 +1,35 @@
 [package]
 name = "v11y-api"
-version = "0.1.0"
-edition = "2021"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+version.workspace = true
+edition.workspace = true
+publish.workspace = true
+license.workspace = true
 
 [dependencies]
-actix-web = "4"
-actix-web-httpauth = "0.8.0"
-anyhow = "1"
-bytesize = "1"
-clap = { version = "4", features = ["derive"] }
-derive_more = "0.99"
-log = "0.4"
-prometheus = "0.13.3"
-serde = { version = "1.0", features = ["derive"] }
-serde_json = "1.0.68"
-sha1 = "0.10.5"
-thiserror = "1"
-tokio = { version = "1.0", features = ["full"] }
-trustification-api = { path = "../../api" }
-trustification-auth = { path = "../../auth", features = ["actix", "swagger"] }
-trustification-common = { path = "../../common" }
-trustification-index = { path = "../../index" }
-trustification-infrastructure = { path = "../../infrastructure" }
-trustification-storage = { path = "../../storage" }
-utoipa = { version = "4", features = ["actix_extras", "chrono"] }
-utoipa-swagger-ui = { version = "6", features = ["actix-web"] }
-v11y-index = { path = "../index" }
-v11y-model = { path = "../model" }
+actix-web = { workspace = true }
+actix-web-httpauth = { workspace = true }
+anyhow = { workspace = true }
+bytesize = { workspace = true }
+clap = { workspace = true, features = ["derive"] }
+derive_more = { workspace = true }
+log = { workspace = true }
+prometheus = { workspace = true }
+serde = { workspace = true, features = ["derive"] }
+serde_json = { workspace = true }
+sha1 = { workspace = true }
+thiserror = { workspace = true }
+tokio = { workspace = true, features = ["full"] }
+utoipa = { workspace = true, features = ["actix_extras", "chrono"] }
+utoipa-swagger-ui = { workspace = true, features = ["actix-web"] }
+
+trustification-api = { workspace = true }
+trustification-auth = { workspace = true, features = ["actix", "swagger"] }
+trustification-common = { workspace = true }
+trustification-index = { workspace = true }
+trustification-infrastructure = { workspace = true }
+trustification-storage = { workspace = true }
+v11y-index = { workspace = true }
+v11y-model = { workspace = true }
 
 [dev-dependencies]
 env_logger = "0.11"

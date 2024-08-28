@@ -1,20 +1,22 @@
 [package]
 name = "v11y-client"
-version = "0.1.0"
-edition = "2021"
+version.workspace = true
+edition.workspace = true
+publish.workspace = true
+license.workspace = true
 
 [dependencies]
-serde = { version = "1.0", features = ["derive"] }
-serde_json = "1.0.68"
-reqwest = "0.11.18"
-anyhow = "1"
-v11y-model = { path = "../model" }
-thiserror = "1.0.44"
-url = "2"
+anyhow = { workspace = true }
+reqwest = { workspace = true }
+serde = { workspace = true, features = ["derive"] }
+serde_json = { workspace = true }
+thiserror = { workspace = true }
+url = { workspace = true }
 
-trustification-api = { path = "../../api" }
-trustification-auth = { path = "../../auth" }
-trustification-infrastructure = { path = "../../infrastructure" }
+trustification-api = { workspace = true }
+trustification-auth = { workspace = true }
+trustification-infrastructure = { workspace = true }
+v11y-model = { workspace = true }
 
 [dev-dependencies]
 tokio = "1"

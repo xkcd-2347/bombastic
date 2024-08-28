@@ -1,20 +1,22 @@
 [package]
 name = "v11y-index"
-version = "0.1.0"
-edition = "2021"
+version.workspace = true
+edition.workspace = true
+publish.workspace = true
+license.workspace = true
 
 [dependencies]
-cve = "0.3.1"
-sikula = { version = "0.4.0", features = ["time"] }
-log = "0.4"
-time = "0.3"
-trustification-index = { path = "../../index" }
-trustification-api = { path = "../../api" }
-serde = { version = "1.0", features = ["derive"] }
-serde_json = "1.0.68"
-cvss = "2"
+cve = { workspace = true }
+cvss = { workspace = true }
+log = { workspace = true }
+serde = { workspace = true, features = ["derive"] }
+serde_json = { workspace = true }
+sikula = { workspace = true, features = ["time"] }
+time = { workspace = true }
 
-v11y-model = { path = "../model" }
+trustification-api = { workspace = true }
+trustification-index = { workspace = true }
+v11y-model = { workspace = true }
 
 [dev-dependencies]
 tokio = { version = "1", features = ["full"] }

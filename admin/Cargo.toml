@@ -1,21 +1,23 @@
 [package]
 name = "trustification-admin"
-version = "0.1.0"
-edition = "2021"
+version.workspace = true
+edition.workspace = true
+publish.workspace = true
+license.workspace = true
 
 [dependencies]
-anyhow = "1"
-clap = { version = "4", features = ["derive"] }
-colored_json = "4"
-env_logger = "0.11"
-log = "0.4"
-regex = "1.9.5"
-reqwest = { version = "0.11.16", features = ["json", "stream"] }
-serde_json = "1"
-url = { version = "2.3.1", features = ["serde"] }
+anyhow = { workspace = true }
+clap = { workspace = true, features = ["derive"] }
+colored_json = { workspace = true }
+env_logger = { workspace = true }
+log = { workspace = true }
+regex = { workspace = true }
+reqwest = { workspace = true, features = ["json", "stream"] }
+serde_json = { workspace = true }
+url = { workspace = true, features = ["serde"] }
 
-trustification-auth = { path = "../auth" }
-trustification-common = { path = "../common" }
-trustification-infrastructure = { path = "../infrastructure" }
-bombastic-model = { path = "../bombastic/model" }
-vexination-model = { path = "../vexination/model" }
+trustification-auth = { workspace = true }
+trustification-common = { workspace = true }
+trustification-infrastructure = { workspace = true }
+bombastic-model = { workspace = true }
+vexination-model = { workspace = true }

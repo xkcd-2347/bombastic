@@ -1,28 +1,31 @@
 [package]
 name = "trustification-storage"
-version = "0.1.0"
-edition = "2021"
+version.workspace = true
+edition.workspace = true
+publish.workspace = true
+license.workspace = true
 
 [dependencies]
-rust-s3 = { git = "https://github.com/trustification/rust-s3.git", branch = "trustification" }
-tokio = { version = "1", features = ["full"] }
-tokio-util = { version = "0.7", features = ["io"] }
-serde = { version = "1.0", features = ["derive"] }
-serde_json = "1.0.68"
-futures = "0.3"
-bytes = "1"
-http = "0.2"
-async-stream = "0.3"
-log = "0.4"
-urlencoding = "2.1.2"
-thiserror = "1"
-async-compression = { version = "0.4", features = ["tokio", "zstd", "bzip2"] }
-clap = { version = "4", features = ["derive", "env"] }
-prometheus = "0.13.3"
-bombastic-model = { path = "../bombastic/model" }
-csaf = "0.5.0"
-hide = "0.1.1"
-bytesize = "1"
+async-compression = { workspace = true, features = ["tokio", "zstd", "bzip2"] }
+async-stream = { workspace = true }
+bytes = { workspace = true }
+bytesize = { workspace = true }
+clap = { workspace = true, features = ["derive", "env"] }
+csaf = { workspace = true }
+futures = { workspace = true }
+hide = { workspace = true }
+http = { workspace = true }
+log = { workspace = true }
+prometheus = { workspace = true }
+rust-s3 = { workspace = true }
+serde = { workspace = true, features = ["derive"] }
+serde_json = { workspace = true }
+thiserror = { workspace = true }
+tokio = { workspace = true, features = ["full"] }
+tokio-util = { workspace = true, features = ["io"] }
+urlencoding = { workspace = true }
+
+bombastic-model = { workspace = true }
 
 [dev-dependencies]
 rstest = "0.19"

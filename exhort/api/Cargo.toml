@@ -1,35 +1,37 @@
 [package]
 name = "exhort-api"
-version = "0.1.0"
-edition = "2021"
+version.workspace = true
+edition.workspace = true
+publish.workspace = true
+license.workspace = true
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-actix-web = "4"
-actix-cors = "0.7"
+actix-web = { workspace = true }
+actix-cors = { workspace = true }
 guac = { workspace = true }
-### this seems completely wrong, but Cargo seems to also require way too many ../ for this
-### wtf am I doing wrong?
-collectorist-client = { path = " ../../../../collectorist/client" }
-exhort-model = { path = "../model" }
-v11y-client = { path = "../../v11y/client"}
-trustification-common = { path = "../../common"}
-trustification-infrastructure = { path = "../../infrastructure" }
-trustification-auth = { path = "../../auth" }
-reqwest = "0.11.18"
-clap = { version = "4", features = ["derive"] }
-anyhow = "1"
-log = "0.4"
-thiserror = "1.0.44"
-utoipa = { version = "4", features = ["actix_extras"] }
-utoipa-swagger-ui = { version = "6", features = ["actix-web"] }
-serde = { version = "1.0", features = ["derive"] }
-serde_json = { version = "1.0.68", features = [ "raw_value" ] }
-packageurl = "0.4"
-regex = "1.9.6"
-lenient_semver = {  version = "0.4.2", features = ["parse_partial"] }
-semver = "1.0.20"
+reqwest = { workspace = true }
+clap = { workspace = true, features = ["derive"] }
+anyhow = { workspace = true }
+log = { workspace = true }
+thiserror = { workspace = true }
+utoipa = { workspace = true, features = ["actix_extras"] }
+utoipa-swagger-ui = { workspace = true, features = ["actix-web"] }
+serde = { workspace = true, features = ["derive"] }
+serde_json = { workspace = true, features = [ "raw_value" ] }
+packageurl = { workspace = true }
+regex = { workspace = true }
+lenient_semver = { workspace = true, features = ["parse_partial"] }
+semver = { workspace = true }
+
+collectorist-client = { workspace = true }
+exhort-model = { workspace = true }
+v11y-client = { workspace = true }
+trustification-common = { workspace = true }
+trustification-infrastructure = { workspace = true }
+trustification-auth = { workspace = true }
+
 
 [dev-dependencies]
 env_logger = "0.11"

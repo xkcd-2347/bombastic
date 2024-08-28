@@ -1,26 +1,28 @@
 [package]
 name = "vexination-walker"
-version = "0.1.0"
-edition = "2021"
+version.workspace = true
+edition.workspace = true
+publish.workspace = true
+license.workspace = true
 
 [dependencies]
-anyhow = "1"
-async-trait = "0.1"
-bytes = "1"
-clap = "4.3.3"
-csaf = "0.5.0"
-csaf-walker = { version = "=0.6.0-rc.1", default-features = false, features = ["crypto-openssl"] }
-humantime = "2.1.0"
-log = "0.4"
-parking_lot = "0.12"
-serde_json = "1.0.68"
-time = "0.3.21"
-tokio = { version = "1.28.2", features = ["full"] }
-tracing = "0.1"
-url = { version = "2.3.1", features = ["serde"] }
-walker-common = { version = "=0.6.0-rc.1", features = [] }
-walker-extras = "=0.6.0-rc.1"
+anyhow = { workspace = true }
+async-trait = { workspace = true }
+bytes = { workspace = true }
+clap = { workspace = true }
+csaf = { workspace = true }
+csaf-walker = { workspace = true, default-features = false, features = ["crypto-openssl"] }
+humantime = { workspace = true }
+log = { workspace = true }
+parking_lot = { workspace = true }
+serde_json = { workspace = true }
+time = { workspace = true }
+tokio = { workspace = true, features = ["full"] }
+tracing = { workspace = true }
+url = { workspace = true, features = ["serde"] }
+walker-common = { workspace = true }
+walker-extras = { workspace = true }
 
-trustification-auth = { path = "../../auth" }
-trustification-common-walker = { path = "../../common/walker" }
-trustification-infrastructure = { path = "../../infrastructure" }
+trustification-auth = { workspace = true }
+trustification-common-walker = { workspace = true }
+trustification-infrastructure = { workspace = true }

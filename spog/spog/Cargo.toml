@@ -1,9 +1,12 @@
 [package]
 name = "spog"
-version = "0.1.0"
-edition = "2021"
+version.workspace = true
+edition.workspace = true
+publish.workspace = true
+license.workspace = true
 
 [dependencies]
-spog-api = { path = "../api" }
-clap = { version = "4", features = ["derive"] }
-anyhow = "1"
+anyhow = { workspace = true }
+clap = { workspace = true, features = ["derive"] }
+
+spog-api = { workspace = true }

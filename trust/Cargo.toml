@@ -1,19 +1,22 @@
 [package]
 name = "trust"
-version = "0.1.0"
-edition = "2021"
+version.workspace = true
+edition.workspace = true
+publish.workspace = true
+license.workspace = true
 
 [dependencies]
-vexination = { path = "../vexination/vexination" }
-bombastic = { path = "../bombastic/bombastic" }
-spog = { path = "../spog/spog" }
-exhort = { path = "../exhort/exhort" }
-collectorist = { path = "../collectorist/collectorist" }
-collector = { path = "../collector/collector" }
-exporter = { path = "../exporter" }
-v11y = { path = "../v11y/v11y" }
-trustification-admin = { path = "../admin" }
+anyhow = { workspace = true }
+clap = { workspace = true, features = ["derive"] }
+tokio = { workspace = true, features = ["full"] }
 
-anyhow = "1"
-clap = { version = "4", features = ["derive"] }
-tokio = { version = "1.0", features = ["full"] }
+bombastic = { workspace = true }
+collector = { workspace = true }
+collectorist = { workspace = true }
+exhort = { workspace = true }
+exporter = { workspace = true }
+spog = { workspace = true }
+trustification-admin = { workspace = true }
+v11y = { workspace = true }
+vexination = { workspace = true }
+

@@ -1,16 +1,16 @@
 [package]
 name = "trustification-version"
-version = "0.1.0"
-edition = "2021"
+version.workspace = true
+edition.workspace = true
+publish.workspace = true
+license.workspace = true
 
 [dependencies]
-serde = { version = "1", features = ["derive"] }
-
-actix-web = { version = "4", optional = true }
-utoipa = { version = "4", optional = true, features = ["actix_extras"] }
-
-vergen = { version = "8", optional = true, features = ["build", "git", "gitcl"] }
-anyhow = { version = "1", optional = true }
+actix-web = { workspace = true, optional = true }
+anyhow = { workspace = true, optional = true }
+serde = { workspace = true, features = ["derive"] }
+utoipa = { workspace = true, optional = true, features = ["actix_extras"] }
+vergen = { workspace = true, optional = true, features = ["build", "git", "gitcl"]}
 
 [features]
 build = ["vergen"]

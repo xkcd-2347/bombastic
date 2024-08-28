@@ -1,32 +1,33 @@
 [package]
 name = "bombastic-api"
-version = "0.1.0"
-edition = "2021"
-license = "Apache-2.0"
+version.workspace = true
+edition.workspace = true
+publish.workspace = true
+license.workspace = true
 description = "Bombastic REST API for fetching, publishing and searching SBOM data"
 
 [dependencies]
-actix-web = "4"
-bytesize = "1"
-serde = { version = "1.0", features = ["derive"] }
-serde_json = "1.0.68"
-tokio = { version = "1.0", features = ["full"] }
-log = "0.4"
-bombastic-index = { path = "../index" }
-bombastic-model = { path = "../model" }
-trustification-api = { path = "../../api" }
-trustification-auth = { path = "../../auth", features = ["actix", "swagger"] }
-trustification-infrastructure = { path = "../../infrastructure" }
-trustification-storage = { path = "../../storage" }
-trustification-index = { path = "../../index" }
-clap = { version = "4", features = ["derive"] }
-anyhow = "1"
-futures = "0.3"
-derive_more = "0.99"
-prometheus = "0.13.3"
+actix-web = { workspace = true }
+anyhow = { workspace = true }
+bytesize = { workspace = true }
+clap = { workspace = true, features = ["derive"] }
+derive_more = { workspace = true }
+futures = { workspace = true }
+log = { workspace = true }
+prometheus = { workspace = true }
+serde = { workspace = true, features = ["derive"] }
+serde_json = { workspace = true }
+tokio = { workspace = true, features = ["full"] }
+utoipa = { workspace = true, features = ["actix_extras"] }
+utoipa-swagger-ui = { workspace = true, features = ["actix-web"] }
 
-utoipa = { version = "4", features = ["actix_extras"] }
-utoipa-swagger-ui = { version = "6", features = ["actix-web"] }
+bombastic-index = { workspace = true }
+bombastic-model = { workspace = true }
+trustification-api = { workspace = true }
+trustification-auth = { workspace = true, features = ["actix", "swagger"] }
+trustification-infrastructure = { workspace = true }
+trustification-storage = { workspace = true }
+trustification-index = { workspace = true }
 
 [dev-dependencies]
 env_logger = "0.11"
