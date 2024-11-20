@@ -87,6 +87,11 @@ spec:
                 - {{ $ignore | quote }}
                 {{- end }}
 
+                {{- with $source.retries }}
+                - "--retries"
+                - {{ . | quote }}
+                {{- end }}
+
               env:
 
                 {{- include "trustification.application.rust.envVars" $mod | nindent 16 }}

@@ -64,7 +64,7 @@ impl Scanner {
                 since: *since,
                 keys: self.options.keys.clone(),
             },
-            FetcherOptions::default(),
+            FetcherOptions::default().retries(self.options.retries),
         )
         .await?;
 

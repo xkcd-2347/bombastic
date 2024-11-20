@@ -94,6 +94,11 @@ spec:
                 - "true"
                 {{- end }}
 
+                {{- with $source.retries }}
+                - "--retries"
+                - {{ . | quote }}
+                {{- end }}
+
               env:
                 {{- include "trustification.application.rust.envVars" $mod | nindent 16 }}
                 {{- include "trustification.application.infrastructure.envVars" $mod | nindent 16 }}
