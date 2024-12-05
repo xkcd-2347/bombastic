@@ -890,7 +890,7 @@ impl<INDEX: Index> IndexStore<INDEX> {
                         &(
                             TopDocs::with_limit(limit)
                                 .and_offset(offset)
-                                .order_by_fast_field::<u64>(&order_by_str, order.clone()),
+                                .order_by_fast_field::<u64>(&order_by_str, order),
                             tantivy::collector::Count,
                         ),
                     )?;
@@ -905,7 +905,7 @@ impl<INDEX: Index> IndexStore<INDEX> {
                         &(
                             TopDocs::with_limit(limit)
                                 .and_offset(offset)
-                                .order_by_fast_field::<i64>(&order_by_str, order.clone()),
+                                .order_by_fast_field::<i64>(&order_by_str, order),
                             tantivy::collector::Count,
                         ),
                     )?;
@@ -920,7 +920,7 @@ impl<INDEX: Index> IndexStore<INDEX> {
                         &(
                             TopDocs::with_limit(limit)
                                 .and_offset(offset)
-                                .order_by_fast_field::<f64>(&order_by_str, order.clone()),
+                                .order_by_fast_field::<f64>(&order_by_str, order),
                             tantivy::collector::Count,
                         ),
                     )?;
@@ -935,7 +935,7 @@ impl<INDEX: Index> IndexStore<INDEX> {
                         &(
                             TopDocs::with_limit(limit)
                                 .and_offset(offset)
-                                .order_by_fast_field::<bool>(&order_by_str, order.clone()),
+                                .order_by_fast_field::<bool>(&order_by_str, order),
                             tantivy::collector::Count,
                         ),
                     )?;
@@ -950,7 +950,7 @@ impl<INDEX: Index> IndexStore<INDEX> {
                         &(
                             TopDocs::with_limit(limit)
                                 .and_offset(offset)
-                                .order_by_fast_field::<DateTime>(&order_by_str, order.clone()),
+                                .order_by_fast_field::<DateTime>(&order_by_str, order),
                             tantivy::collector::Count,
                         ),
                     )?;

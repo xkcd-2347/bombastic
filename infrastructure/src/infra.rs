@@ -158,7 +158,7 @@ impl Infrastructure {
             App::new()
                 .wrap(Logger::default())
                 .app_data(web::Data::new(metrics_registry))
-                .app_data(web::Data::from(health.clone()))
+                .app_data(web::Data::from(health))
                 .service(web::resource("/").to(index))
                 .service(
                     web::scope("/health")

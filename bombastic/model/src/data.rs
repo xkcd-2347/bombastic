@@ -81,7 +81,7 @@ impl SBOM {
                         match result.passed() {
                             true => return Ok(SBOM::CycloneDX(bom)),
                             false => {
-                                let all_reasons = Self::get_validation_error_messages(result.clone())
+                                let all_reasons = Self::get_validation_error_messages(result)
                                     .into_iter()
                                     // Ignore normalizedstring errors
                                     // until https://github.com/CycloneDX/cyclonedx-rust-cargo/issues/737 is fixed

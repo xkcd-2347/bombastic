@@ -152,7 +152,7 @@ pub async fn handle_report(report: Report, option: ReportGenerateOption) -> anyh
     if let Some(parent) = std::path::Path::new(&out_put_html_path).parent() {
         fs::create_dir_all(parent)?;
     }
-    fs::write(out_put_html_path.clone(), rendered_html)?;
+    fs::write(out_put_html_path, rendered_html)?;
     log::info!("Successfully generated the report file.");
 
     Ok(())

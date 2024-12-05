@@ -121,7 +121,7 @@ impl Run {
                 provider.clone(),
             ),
             guac_client: GuacClient::new(guac_graphql_url.as_str()),
-            v11y_client: V11yClient::new(client.build_client()?, v11y_url, provider.clone()),
+            v11y_client: V11yClient::new(client.build_client()?, v11y_url, provider),
         });
         Ok(state)
     }
