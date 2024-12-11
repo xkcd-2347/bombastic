@@ -93,6 +93,7 @@ impl CrdaClient {
             .client
             .post(self.url.clone())
             .header(header::CONTENT_TYPE, content_type)
+            .header(header::CONTENT_ENCODING, "gzip")
             .header(header::ACCEPT, "text/html")
             .header(&RHDA_SOURCE_HEADER, RHDA_SOURCE_VALUE)
             .header(&RHDA_OPERATION_TYPE_HEADER, RHDA_OPERATION_TYPE_VALUE);
