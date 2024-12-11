@@ -1,5 +1,4 @@
 pub mod advisory;
-pub mod analyze;
 pub mod cve;
 pub mod dashboard;
 pub mod index;
@@ -23,8 +22,6 @@ use utoipa::OpenApi;
         sbom::get_vulnerabilities,
         advisory::get,
         advisory::search,
-
-        analyze::report,
 
         package::package_search,
         package::package_get,

@@ -2,18 +2,13 @@ use crate::db::Db;
 use crate::{
     app_state::AppState,
     config,
-    endpoints::{
-        self,
-        analyze::{self, CrdaClient},
-        wellknown::endpoints::Endpoints,
-    },
+    endpoints::{self, wellknown::endpoints::Endpoints},
     service::{collectorist::CollectoristService, guac::GuacService, v11y::V11yService},
     Run,
 };
 use actix_web::web;
 use anyhow::Context;
 use futures::future::select_all;
-use hide::Hide;
 use std::future::Future;
 use std::pin::Pin;
 use std::{net::TcpListener, sync::Arc};
@@ -66,11 +61,6 @@ impl Server {
 
         let config_configurator = config::configurator(self.run.config, authenticator.clone()).await?;
 
-        let crda = self
-            .run
-            .crda_url
-            .map(|url| CrdaClient::new(url, self.run.snyk_token.map(Hide::take)))
-            .map(web::Data::new);
         let crda_payload_limit = self.run.crda_payload_limit;
 
         let endpoints = Endpoints {
@@ -117,10 +107,6 @@ impl Server {
                     .configure(endpoints::advisory::configure(authenticator.clone()))
                     .configure(endpoints::cve::configure(authenticator.clone()))
                     .configure(endpoints::package::configure(authenticator.clone()))
-                    .configure(endpoints::dashboard::configure(
-                        authenticator.clone(),
-                        crda_payload_limit,
-                    ))
                     .configure(endpoints::suggestion::configure(authenticator.clone()))
                     .configure(endpoints::dashboard::configure(
                         authenticator.clone(),
@@ -137,11 +123,6 @@ impl Server {
 
                         swagger.url("/openapi.json", openapi)
                     });
-
-                if let Some(crda) = &crda {
-                    svc.app_data(crda.clone())
-                        .configure(analyze::configure(crda_payload_limit));
-                }
             });
 
         if let Some(v) = listener {
