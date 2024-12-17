@@ -42,15 +42,27 @@ spec:
               args:
                 - "-ec"
                 - |
-                  if test -d cvelistV5; then
-                    cd cvelistV5
-                    git stash
-                    git stash clear
-                    git pull
+                  echo "Check cvelistV5 directory is a valid Git repository" 
+                  if test -d "cvelistV5/.git" && git -C cvelistV5 rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+                    echo "Check cvelistV5 repository integrity"
+                    if git -C cvelistV5 fsck --full >/dev/null 2>&1; then
+                      echo "cvelistV5 repository is clean. Pulling latest changes"
+                      cd cvelistV5
+                      git stash
+                      git stash clear
+                      git pull
+                      exit 0
+                    else
+                      echo "cvelistV5 repository corrupted. Cleaning up"
+                      rm -rf cvelistV5/*
+                    fi
                   else
-                    git clone https://github.com/CVEProject/cvelistV5
+                    echo "Not a valid Git repository. Cleaning up..."
+                    rm -rf cvelistV5/*
                   fi
-
+                  
+                  echo "Cloning cvelistV5 repository"
+                  git clone https://github.com/CVEProject/cvelistV5 cvelistV5
           containers:
             - name: walker
               {{- include "trustification.common.defaultImage" $mod | nindent 14 }}
