@@ -234,9 +234,9 @@ fn details(props: &DetailsProps) -> Html {
                                     />
                                 </>
                             )}/>
-                            { for config.features.show_report.then(|| html_nested!(
-                                <Tab<TabIndex> index={TabIndex::Report} title="Dependency Analytics Report" />
-                            )) }
+                            // { for config.features.show_report.then(|| html_nested!(
+                            //     <Tab<TabIndex> index={TabIndex::Report} title="Dependency Analytics Report" />
+                            // )) }
                             { for config.features.show_source.then(|| html_nested!(
                                 <Tab<TabIndex> index={TabIndex::Source} title="Source" />
                             )) }

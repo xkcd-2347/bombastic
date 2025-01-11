@@ -105,9 +105,9 @@ pub fn validate(data: &[u8]) -> Result<SBOM, anyhow::Error> {
             });
 
             match supported_packages {
-                Some(false) => bail!(
-                    "The SBOM contains package type(s) not supported by Dependency Analytics. The Dependency Analytics report may be unavailable for this SBOM."
-                ),
+                Some(false) => {
+                    // bail!("The SBOM contains package type(s) not supported by Dependency Analytics. The Dependency Analytics report may be unavailable for this SBOM.")
+                }
                 _ => {}
             }
         }
@@ -130,9 +130,9 @@ pub fn validate(data: &[u8]) -> Result<SBOM, anyhow::Error> {
 
             match supported_packages {
                 Some(true) => {}
-                _ => bail!(
-                    "The SBOM contains package type(s) not supported by Dependency Analytics. The Dependency Analytics report may be unavailable for this SBOM."
-                ),
+                _ => {
+                    // bail!("The SBOM contains package type(s) not supported by Dependency Analytics. The Dependency Analytics report may be unavailable for this SBOM.")
+                }
             }
         }
     }
